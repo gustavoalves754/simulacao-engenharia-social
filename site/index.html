@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Outlook Simulado – Engenharia Social</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="outlook-container">
+    <aside class="sidebar">
+      <div class="logo">Outlook</div>
+      <nav class="menu">
+        <div class="menu-title">Favoritos</div>
+        <ul>
+          <li class="active" data-view="inbox-view">📥<span>Caixa de Entrada</span></li>
+          <li data-view="sent-view">📤<span>Itens Enviados</span></li>
+          <li data-view="drafts-view">📝<span>Rascunhos</span></li>
+        </ul>
+        <div class="menu-title">Pastas</div>
+        <ul>
+          <li data-view="spam-view">📂<span>Lixo Eletrônico</span></li>
+          <li data-view="deleted-view">🗑️<span>Itens Excluídos</span></li>
+          <li data-view="notes-view">💬<span>Observações</span></li>
+          <li data-view="archive-view">🗃️<span>Arquivo Morto</span></li>
+          <li data-view="history-view">📑<span>Histórico de Conversas</span></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="toolbar">
+        <button class="new-email">Novo email</button>
+      </div>
+
+      <!-- Compose -->
+      <section id="compose-view" class="view compose">
+        <h2>Escrever novo email</h2>
+        <form id="compose-form">
+          <label>Para:<input type="email" id="to" required /></label>
+          <label>Assunto:<input type="text" id="subject" required /></label>
+          <label>Corpo:<textarea id="body" rows="6" required></textarea></label>
+          <div class="compose-actions">
+            <button type="submit">Enviar</button>
+            <button type="button" id="cancel-compose">Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Inbox -->
+      <section id="inbox-view" class="view email-list"></section>
+      <!-- Sent -->
+      <section id="sent-view" class="view email-list"></section>
+      <!-- Drafts -->
+      <section id="drafts-view" class="view email-list"></section>
+      <!-- Spam -->
+      <section id="spam-view" class="view email-list"></section>
+      <!-- Deleted -->
+      <section id="deleted-view" class="view email-list"></section>
+      <!-- Notes -->
+      <section id="notes-view" class="view email-list">
+        <p style="padding:20px; color:#777;">Sem observações.</p>
+      </section>
+      <!-- Archive -->
+      <section id="archive-view" class="view email-list">
+        <p style="padding:20px; color:#777;">Nenhum arquivo.</p>
+      </section>
+      <!-- History -->
+      <section id="history-view" class="view email-list">
+        <p style="padding:20px; color:#777;">Sem histórico.</p>
+      </section>
+
+      <!-- Detalhe do Email -->
+      <section id="email-detail-view" class="view email-detail">
+        <h2 id="detail-subject">Alerta de Segurança</h2>
+        <div class="meta-line" id="detail-from">De: suporte@seguranca.com</div>
+        <div class="meta-line" id="detail-to">Para: você</div>
+        <div class="meta-line" id="detail-date">Data: hoje</div>
+        <div class="body" id="detail-body">
+          <p>Prezado usuário, detectamos uma atividade suspeita em sua conta.</p>
+          <p><a href="#" onclick="executarScript()">Clique aqui para redefinir sua senha.</a></p>
+        </div>
+        <button class="delete-btn">Excluir este email</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal Hack -->
+  <div id="hack-alert" class="alert-overlay">
+    <div class="alert-content dark">
+      <h1>💀 SISTEMA COMPROMETIDO!</h1>
+      <p>Um vírus invadiu o sistema. Interface comprometida.</p>
+      <button id="close-hack" class="close-btn">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Safe -->
+  <div id="safe-alert" class="alert-overlay">
+    <div class="alert-content light">
+      <h1>🎉 Tudo certo!</h1>
+      <p>Email excluído com sucesso.</p>
+      <button id="close-safe" class="close-btn">Fechar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function executarScript() {
+      fetch('/executar')
+        .then(response => response.json())
+        .then(data => console.log('Simulação iniciada:', data));
+    }
+  </script>
+</body>
+</html>
