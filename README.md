@@ -6,8 +6,8 @@ Foi desenvolvido para um trabalho acadêmico na área de segurança da informaç
 ## 🎯 Objetivo
 Demonstrar, de forma prática, como usuários podem ser enganados por e-mails falsos e interfaces falsas, evidenciando o papel humano nas falhas de segurança.
 
-## 🛠 Tecnologias utilizadas
-- Python (Tkinter, PyAutoGUI)
+## 🛠 Tecnologias utilizadas:
+- Python
 - HTML/CSS (para simular interface de e-mail)
 - NirSoft (versão segura com senhas fictícias)
 - Animações e automações
